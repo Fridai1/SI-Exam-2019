@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>Location_Service</RootNamespace>
+    <UserSecretsId>d66e9c9b-0b02-4707-b29e-0f19d0c02a0a</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.30" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="MySql.Data" Version="8.0.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="published\cs\" />
+    <Folder Include="published\de\" />
+    <Folder Include="published\es\" />
+    <Folder Include="published\fr\" />
+    <Folder Include="published\it\" />
+    <Folder Include="published\ja\" />
+    <Folder Include="published\ko\" />
+    <Folder Include="published\pl\" />
+    <Folder Include="published\pt-BR\" />
+    <Folder Include="published\runtimes\unix\lib\netcoreapp2.0\" />
+    <Folder Include="published\runtimes\unix\lib\netcoreapp2.1\" />
+    <Folder Include="published\runtimes\win-arm64\native\" />
+    <Folder Include="published\runtimes\win-x64\native\" />
+    <Folder Include="published\runtimes\win-x86\native\" />
+    <Folder Include="published\runtimes\win\lib\netcoreapp2.0\" />
+    <Folder Include="published\runtimes\win\lib\netcoreapp2.1\" />
+    <Folder Include="published\runtimes\win\lib\netstandard2.0\" />
+    <Folder Include="published\ru\" />
+    <Folder Include="published\tr\" />
+    <Folder Include="published\zh-Hans\" />
+    <Folder Include="published\zh-Hant\" />
+  </ItemGroup>
+
+</Project>
