@@ -1,0 +1,37 @@
+version: '3.4'
+services:
+  CarService:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ServiceConfig__serviceDiscoveryAddress=http://consul:8500
+      - ServiceConfig__serviceAddress=http://carservice:80
+      - ServiceConfig__serviceName=carservice
+      - ServiceConfig__serviceId=carservice-v1
+    ports:
+      - "80"
+  LocationService:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ServiceConfig__serviceDiscoveryAddress=http://consul:8500
+      - ServiceConfig__serviceAddress=http://LocationService:80
+      - ServiceConfig__serviceName=LocationService
+      - ServiceConfig__serviceId=LocationService-v1
+    ports:
+      - "80"
+  SurveyService:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ServiceConfig__serviceDiscoveryAddress=http://consul:8500
+      - ServiceConfig__serviceAddress=http://SurveyService:80
+      - ServiceConfig__serviceName=SurveyService
+      - ServiceConfig__serviceId=SurveyService-v1
+    ports:
+      - "80"
+api.gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80:80"
+consul:
+    ports:
+      - "8500"
