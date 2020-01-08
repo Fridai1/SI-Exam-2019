@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="published\**" />
+    <Content Remove="published\**" />
+    <EmbeddedResource Remove="published\**" />
+    <None Remove="published\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.30" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
@@ -22,27 +29,10 @@
 
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="published\cs\" />
-    <Folder Include="published\de\" />
-    <Folder Include="published\es\" />
-    <Folder Include="published\fr\" />
-    <Folder Include="published\it\" />
-    <Folder Include="published\ja\" />
-    <Folder Include="published\ko\" />
-    <Folder Include="published\pl\" />
-    <Folder Include="published\pt-BR\" />
-    <Folder Include="published\runtimes\unix\lib\netcoreapp2.0\" />
-    <Folder Include="published\runtimes\unix\lib\netcoreapp2.1\" />
-    <Folder Include="published\runtimes\win-arm64\native\" />
-    <Folder Include="published\runtimes\win-x64\native\" />
-    <Folder Include="published\runtimes\win-x86\native\" />
-    <Folder Include="published\runtimes\win\lib\netcoreapp2.0\" />
-    <Folder Include="published\runtimes\win\lib\netcoreapp2.1\" />
-    <Folder Include="published\runtimes\win\lib\netstandard2.0\" />
-    <Folder Include="published\ru\" />
-    <Folder Include="published\tr\" />
-    <Folder Include="published\zh-Hans\" />
-    <Folder Include="published\zh-Hant\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Api Gateway Example\ApiGateway-example-master\src\common\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
