@@ -1,30 +1,30 @@
 version: '3.4'
 services:
   CarService:
-    image: nikolaichristiansen/carservice:latest
+    image: carservice:latest
     build:
       context: .
-      dockerfile: src/services/Orders/Dockerfile
+      dockerfile: src/services/Car-Service/Car-Service/Dockerfile
     container_name: CarService
   LocationService:
-    image: nikolaichristiansen/locationservice:latest
+    image: locationservice:latest
     build:
       context: .
-      dockerfile: src/services/Deliveries/Dockerfile
+      dockerfile: src/services/Location Service/Location Service/Dockerfile
     container_name: LocationService
   SurveyService:
-    image: nikolaichristiansen/surveyserviceapp:latest
+    image: surveyserviceapp:latest
     build:
       context: .
-      dockerfile: src/services/Deliveries/Dockerfile
+      dockerfile: src/services/SurveyServiceApp/Dockerfile
     container_name: SurveyService
-api.gateway:
+  api.gateway:
     image: apigateway:latest
     build:
       context: .
       dockerfile: src/gateways/API.Gateway/Dockerfile
     container_name: apigateway
-consul:
+  consul:
     image: consul:latest
     command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
     hostname: consul

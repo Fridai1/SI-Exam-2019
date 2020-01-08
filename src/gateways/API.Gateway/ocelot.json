@@ -1,0 +1,41 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/car/{everything}",
+      "DownstreamScheme": "http",
+      "ServiceName": "CarService",
+      "UpstreamPathTemplate": "/api/car/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/car/",
+      "DownstreamScheme": "http",
+      "ServiceName": "CarService",
+      "UpstreamPathTemplate": "/api/car/",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/location/{everything}",
+      "DownstreamScheme": "http",
+      "ServiceName": "LocationService",
+      "UpstreamPathTemplate": "/api/location/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/location/",
+      "DownstreamScheme": "http",
+      "ServiceName": "LocationService",
+      "UpstreamPathTemplate": "/api/location/",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+
+
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "consul",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}

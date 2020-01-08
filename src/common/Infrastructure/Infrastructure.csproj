@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Consul" Version="0.7.2.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include=".vs\Infrastructure\DesignTimeBuild\" />
+    <Folder Include=".vs\Infrastructure\v16\Server\" />
+    <Folder Include=".vs\Infrastructure\v16\Server\sqlite3\" />
+  </ItemGroup>
+
+
+</Project>
