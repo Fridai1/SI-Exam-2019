@@ -27,6 +27,20 @@
       "ServiceName": "LocationService",
       "UpstreamPathTemplate": "/api/location/",
       "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/pickupdropoff/",
+      "DownstreamScheme": "http",
+      "ServiceName": "PickupDropoff",
+      "UpstreamPathTemplate": "/api/pickupdropoff/",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/pickupdropoff/{everything}",
+      "DownstreamScheme": "http",
+      "ServiceName": "PickupDropoff",
+      "UpstreamPathTemplate": "/api/pickupdropoff/{everything}",
+      "UpstreamHttpMethod": [ "Get" ]
     }
 
 

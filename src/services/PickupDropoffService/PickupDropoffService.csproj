@@ -13,5 +13,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\common\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
 
 </Project>

@@ -19,28 +19,31 @@ namespace PickupDropoffService.Controllers
         }
 
         // GET: api/PickupDropoff/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{city1}&{city2}", Name = "Get")]
+        public string Get(string city1, string city2)
         {
-            return "value";
+            return $"value {city1} - {city2}";
         }
 
         // POST: api/PickupDropoff
         [HttpPost]
         public void Post([FromBody] string value)
         {
+
         }
 
         // PUT: api/PickupDropoff/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+
         }
     }
 }
