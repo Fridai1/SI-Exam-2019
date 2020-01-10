@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Dapper;
 using MySql.Data.MySqlClient;
 
@@ -37,6 +38,40 @@ namespace Location_Service.Models
                 var newLocation = connection.Query<Location>("Select * FROM Location ORDER BY idLocation DESC LIMIT 1").ToList();
                 return newLocation.Last().idLocation;
             }
+        }
+
+        public List<CarLocation> GetLocationsByCar(Car car)
+        {
+            string query = $"SELECT * FROM `Cars` WHERE brand = '{car.brand}' AND Doors = {car.Door}";
+            List<Car> result = new List<Car>();
+            List<CarLocation> locationList = new List<CarLocation>();
+            
+            // Gets all cars with the predetermined filter
+            using (var connection = new MySqlConnection(connString))
+            {
+                 result = connection.Query<Car>(query).ToList();
+            }
+
+            // Gets all the locations where the previous cars where located.
+            using (var connection = new MySqlConnection(connString))
+            {
+                
+                foreach (var c in result)
+                {
+                    // checks to see if we have already found that specific location.
+                    if (!locationList.Exists(x => x.idCarLocation == c.IdCarLocation))
+                    {
+                        query = $"SELECT * CarLocation WHERE idCarLocation = {c.IdCarLocation}";
+                        List<CarLocation> l = connection.Query<CarLocation>(query).ToList();
+                        locationList.Append(l[0]);
+                    }
+                    
+                }
+            }
+
+            return locationList;
+
+
         }
     }
 }

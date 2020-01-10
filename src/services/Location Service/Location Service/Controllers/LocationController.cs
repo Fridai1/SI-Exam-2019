@@ -14,12 +14,14 @@ namespace Location_Service.Controllers
     public class LocationController : ControllerBase
     {
         private LocationMvcController locationController = new LocationMvcController();
-        // GET: api/Location
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+
+        private DbUtilities dbu = new DbUtilities();
+        //// GET: api/Location
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
         // GET: api/Location/5
         [HttpGet("{id}", Name = "Get")]
@@ -35,6 +37,15 @@ namespace Location_Service.Controllers
 
             locationController.CreateLocation(value.PostalCode,value.SurveyId);
         }
+
+        //// GET: api/location
+        //[HttpGet]
+        //public List<CarLocation> Get([FromBody]Car car)
+        //{
+        //    return dbu.GetLocationsByCar(car);
+        //}
+
+
 
     }
 }
