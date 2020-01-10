@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using MySql.Data.MySqlClient;
@@ -40,9 +41,10 @@ namespace Location_Service.Models
             }
         }
 
-        public List<CarLocation> GetLocationsByCar(Car car)
+        public List<CarLocation> GetLocationsByCar(string door, string brand)
         {
-            string query = $"SELECT * FROM `Cars` WHERE brand = '{car.brand}' AND Doors = {car.Door}";
+            int doorint = Int32.Parse(door);
+            string query = $"SELECT * FROM `Cars` WHERE brand = '{brand}' AND Doors = {doorint}";
             List<Car> result = new List<Car>();
             List<CarLocation> locationList = new List<CarLocation>();
             
