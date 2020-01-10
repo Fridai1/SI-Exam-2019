@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurveyServiceApp", "src\ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Location Service", "src\services\Location Service\Location Service\Location Service.csproj", "{20F6E7B7-AD62-4B2F-80AF-2E9ADA9DA714}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickupDropoffService", "src\services\PickupDropoffService\PickupDropoffService.csproj", "{AB46AED4-C698-403D-935F-19B222CF936B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{20F6E7B7-AD62-4B2F-80AF-2E9ADA9DA714}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20F6E7B7-AD62-4B2F-80AF-2E9ADA9DA714}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20F6E7B7-AD62-4B2F-80AF-2E9ADA9DA714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB46AED4-C698-403D-935F-19B222CF936B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB46AED4-C698-403D-935F-19B222CF936B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB46AED4-C698-403D-935F-19B222CF936B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB46AED4-C698-403D-935F-19B222CF936B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{3E7D149D-6140-4FA8-8A3A-ECAB1DB33D42} = {92DF1CEE-AB72-47BC-8607-94B9973948D3}
 		{F1F820C4-9054-4B5A-90A5-DD11FB077AB3} = {92DF1CEE-AB72-47BC-8607-94B9973948D3}
 		{20F6E7B7-AD62-4B2F-80AF-2E9ADA9DA714} = {92DF1CEE-AB72-47BC-8607-94B9973948D3}
+		{AB46AED4-C698-403D-935F-19B222CF936B} = {92DF1CEE-AB72-47BC-8607-94B9973948D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9CCB6670-D9F6-4EC2-AF70-29F24DA3B99F}

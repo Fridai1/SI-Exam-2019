@@ -18,6 +18,12 @@ services:
       context: .
       dockerfile: src/services/SurveyServiceApp/Dockerfile
     container_name: SurveyService
+  PickupDropoffService
+    image: pickupdropoffservice:latest
+    build:
+        context: .
+        dockerfile: src/services/PickupDropoffService/Dockerfile
+    container_name: PickupDropoffService
   api.gateway:
     image: apigateway:latest
     build:
