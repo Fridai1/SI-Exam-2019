@@ -15,7 +15,6 @@ namespace PickupDropoffService.Controllers
     [ApiController]
     public class PickupDropoffController : ControllerBase
     {
-        private string apiKey = "AIzaSyCL5mdgxOBB8UFM6prTzYCnqjw_qW8qca8";
 
 
         // GET: api/PickupDropoff
@@ -27,9 +26,9 @@ namespace PickupDropoffService.Controllers
 
         // GET: api/PickupDropoff/5
 
-        [HttpGet("{city1}&{city2}", Name = "Get")]
+        [HttpGet("{city1}&{city2}&key={apiKey}", Name = "Get")]
         // Make into array to return more destinations and calculate the distance.
-        public string Get(string city1, string city2)
+        public string Get(string city1, string city2, string apiKey)
         {
             string responseFromServer = "";
             Location myLocation = null;
@@ -46,11 +45,7 @@ namespace PickupDropoffService.Controllers
                 myLocation = JsonConvert.DeserializeObject<Location>(responseFromServer);
             }
 
-
-
             //return $"From {myLocation.Origin_Addresses[0]} to {myLocation.Destination_Addresses[0]}";
-
-
             //return responseFromServer;
 
             return myLocation.Rows[0].Elements[0].Distance.Text;
