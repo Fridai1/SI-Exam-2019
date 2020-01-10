@@ -30,25 +30,31 @@ namespace PickupDropoffService.Controllers
         // Make into array to return more destinations and calculate the distance.
         public string Get(string city1, string city2, string apiKey)
         {
+            // Google API Request
             string responseFromServer = "";
-            Location myLocation = null;
-            WebRequest webRequest = WebRequest.Create($"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={city1}&destinations={city2}&key={apiKey}");
-            webRequest.Credentials = CredentialCache.DefaultCredentials;
+            Location googleLocation = null;
+            WebRequest googleRequest = WebRequest.Create($"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={city1}&destinations={city2}&key={apiKey}");
+            googleRequest.Credentials = CredentialCache.DefaultCredentials;
+            WebResponse googleResponse = googleRequest.GetResponse();
+            Stream googleStream = googleResponse.GetResponseStream();
 
-            WebResponse webResponse = webRequest.GetResponse();
-            Stream dataStream = webResponse.GetResponseStream();
+            //// Location API Request
+            //WebRequest locationRequest = WebRequest.Create($"https://inserturl.com");
+            //locationRequest.Credentials = CredentialCache.DefaultCredentials;
+            //WebResponse webResponse = locationRequest.GetResponse();
+            //Stream locationStream = webResponse.GetResponseStream();
 
-            if (dataStream != null)
+            if (googleRequest != null)
             {
-                StreamReader reader = new StreamReader(dataStream);
+                StreamReader reader = new StreamReader(googleStream);
                 responseFromServer = reader.ReadToEnd();
-                myLocation = JsonConvert.DeserializeObject<Location>(responseFromServer);
+                googleLocation = JsonConvert.DeserializeObject<Location>(responseFromServer);
             }
 
             //return $"From {myLocation.Origin_Addresses[0]} to {myLocation.Destination_Addresses[0]}";
             //return responseFromServer;
-
-            return myLocation.Rows[0].Elements[0].Distance.Text;
+            // return googleLocation.Rows[0].Elements[0].Distance.Text;
+            return responseFromServer;
         }
 
         // POST: api/PickupDropoff
