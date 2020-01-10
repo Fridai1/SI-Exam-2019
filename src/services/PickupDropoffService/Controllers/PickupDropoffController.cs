@@ -6,6 +6,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using PickupDropoffService.Models;
 
 namespace PickupDropoffService.Controllers
 {
@@ -24,11 +26,14 @@ namespace PickupDropoffService.Controllers
         }
 
         // GET: api/PickupDropoff/5
+
         [HttpGet("{city1}&{city2}", Name = "Get")]
+        // Make into array to return more destinations and calculate the distance.
         public string Get(string city1, string city2)
         {
             string responseFromServer = "";
-            WebRequest webRequest = WebRequest.Create($"https://maps.googleapis.com/maps/api/directions/json?origin={city1}&destination={city2}&key={apiKey}");
+            Location myLocation = null;
+            WebRequest webRequest = WebRequest.Create($"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={city1}&destinations={city2}&key={apiKey}");
             webRequest.Credentials = CredentialCache.DefaultCredentials;
 
             WebResponse webResponse = webRequest.GetResponse();
@@ -38,10 +43,17 @@ namespace PickupDropoffService.Controllers
             {
                 StreamReader reader = new StreamReader(dataStream);
                 responseFromServer = reader.ReadToEnd();
+                myLocation = JsonConvert.DeserializeObject<Location>(responseFromServer);
             }
 
-            webResponse.Close();
-            return responseFromServer;
+
+
+            //return $"From {myLocation.Origin_Addresses[0]} to {myLocation.Destination_Addresses[0]}";
+
+
+            //return responseFromServer;
+
+            return myLocation.Rows[0].Elements[0].Distance.Text;
         }
 
         // POST: api/PickupDropoff
