@@ -29,18 +29,26 @@ namespace PickupDropoffService.Controllers
         public string Get(string city1, [FromBody]Car car, string apiKey)
         {
             // Location API Request
-            WebRequest locationRequest = WebRequest.Create($"https://localhost:8002/api/location/");
+            string responseFromLocationService = "";
+            List<CarLocation> carLocations = null;
+
+            WebRequest locationRequest = WebRequest.Create($"https://localhost:8002/api/location/{car.Door}&{car.brand}");
             locationRequest.Credentials = CredentialCache.DefaultCredentials;
             WebResponse webResponse = locationRequest.GetResponse();
             Stream locationStream = webResponse.GetResponseStream();
 
+            StreamReader locationReader = new StreamReader(locationStream);
+            responseFromLocationService = locationReader.ReadToEnd();
+            carLocations = JsonConvert.DeserializeObject<List<CarLocation>>(responseFromLocationService);
+
+            carLocations.GetAllAddresses();
 
             // Google API Request
-            string responseFromServer = "";
+            string responseFromGoogleService = "";
             Location googleLocation = null;
 
 
-            WebRequest googleRequest = WebRequest.Create($"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={city1}&destinations={city2.ToString()}&key={apiKey}");
+            WebRequest googleRequest = WebRequest.Create($"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={city1}&destinations={carLocations.GetAllAddresses()}&key={apiKey}");
             googleRequest.Credentials = CredentialCache.DefaultCredentials;
             WebResponse googleResponse = googleRequest.GetResponse();
             Stream googleStream = googleResponse.GetResponseStream();
@@ -48,14 +56,14 @@ namespace PickupDropoffService.Controllers
             if (googleRequest != null)
             {
                 StreamReader reader = new StreamReader(googleStream);
-                responseFromServer = reader.ReadToEnd();
-                googleLocation = JsonConvert.DeserializeObject<Location>(responseFromServer);
+                responseFromGoogleService = reader.ReadToEnd();
+                googleLocation = JsonConvert.DeserializeObject<Location>(responseFromGoogleService);
             }
 
             //return $"From {myLocation.Origin_Addresses[0]} to {myLocation.Destination_Addresses[0]}";
             //return responseFromServer;
             // return googleLocation.Rows[0].Elements[0].Distance.Text;
-            return responseFromServer;
+            return responseFromGoogleService;
         }
 
         // POST: api/PickupDropoff
