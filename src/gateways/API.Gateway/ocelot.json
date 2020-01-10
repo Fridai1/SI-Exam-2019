@@ -27,6 +27,13 @@
       "ServiceName": "LocationService",
       "UpstreamPathTemplate": "/api/location/",
       "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/location/",
+      "DownstreamScheme": "http",
+      "ServiceName": "LocationService",
+      "UpstreamPathTemplate": "/api/location/",
+      "UpstreamHttpMethod": [ "POST" ]
     }
 
 
