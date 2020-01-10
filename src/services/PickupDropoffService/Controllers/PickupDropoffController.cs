@@ -15,8 +15,6 @@ namespace PickupDropoffService.Controllers
     [ApiController]
     public class PickupDropoffController : ControllerBase
     {
-
-
         // GET: api/PickupDropoff
         [HttpGet]
         public IEnumerable<string> Get()
@@ -24,26 +22,28 @@ namespace PickupDropoffService.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/PickupDropoff/5
+        // GET: api/PickupDropoff/Copenhagen&key=INSERT_API_KEY
 
         [HttpGet("{city1}&key={apiKey}", Name = "Get")]
         // Make into array to return more destinations and calculate the distance.
-        public string Get(string city1, [FromBody]string[] city2, string apiKey)
+        public string Get(string city1, [FromBody]Car car, string apiKey)
         {
+            // Location API Request
+            WebRequest locationRequest = WebRequest.Create($"https://localhost:8002/api/location/");
+            locationRequest.Credentials = CredentialCache.DefaultCredentials;
+            WebResponse webResponse = locationRequest.GetResponse();
+            Stream locationStream = webResponse.GetResponseStream();
+
+
             // Google API Request
             string responseFromServer = "";
             Location googleLocation = null;
 
-            WebRequest googleRequest = WebRequest.Create($"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={city1}&destinations={city2}&key={apiKey}");
+
+            WebRequest googleRequest = WebRequest.Create($"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={city1}&destinations={city2.ToString()}&key={apiKey}");
             googleRequest.Credentials = CredentialCache.DefaultCredentials;
             WebResponse googleResponse = googleRequest.GetResponse();
             Stream googleStream = googleResponse.GetResponseStream();
-
-            //// Location API Request
-            //WebRequest locationRequest = WebRequest.Create($"https://inserturl.com");
-            //locationRequest.Credentials = CredentialCache.DefaultCredentials;
-            //WebResponse webResponse = locationRequest.GetResponse();
-            //Stream locationStream = webResponse.GetResponseStream();
 
             if (googleRequest != null)
             {
