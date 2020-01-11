@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: src/services/SurveyServiceApp/Dockerfile
     container_name: SurveyService
-  PickupDropoffService
+  PickupDropoffService:
     image: pickupdropoffservice:latest
     build:
         context: .

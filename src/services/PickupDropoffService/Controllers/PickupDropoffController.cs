@@ -32,7 +32,7 @@ namespace PickupDropoffService.Controllers
             string responseFromLocationService = "";
             List<CarLocation> carLocations = null;
 
-            WebRequest locationRequest = WebRequest.Create($"https://localhost:8002/api/location/{car.Door}&{car.brand}");
+            WebRequest locationRequest = WebRequest.Create($"http://192.168.0.25:8002/api/location/{car.Doors}&{car.Brand}");
             locationRequest.Credentials = CredentialCache.DefaultCredentials;
             WebResponse webResponse = locationRequest.GetResponse();
             Stream locationStream = webResponse.GetResponseStream();

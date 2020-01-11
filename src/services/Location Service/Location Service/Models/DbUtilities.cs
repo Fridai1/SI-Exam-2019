@@ -61,11 +61,11 @@ namespace Location_Service.Models
                 foreach (var c in result)
                 {
                     // checks to see if we have already found that specific location.
-                    if (!locationList.Exists(x => x.idCarLocation == c.IdCarLocation))
+                    if (!locationList.Exists(x => x.idCarLocation == c.IdLocation))
                     {
-                        query = $"SELECT * CarLocation WHERE idCarLocation = {c.IdCarLocation}";
+                        query = $"SELECT * FROM CarLocation WHERE idCarLocation = {c.IdLocation}";
                         List<CarLocation> l = connection.Query<CarLocation>(query).ToList();
-                        locationList.Append(l[0]);
+                        locationList.Add(l[0]);
                     }
                     
                 }

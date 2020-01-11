@@ -38,8 +38,8 @@ namespace Location_Service.Controllers
             locationController.CreateLocation(value.PostalCode,value.SurveyId);
         }
 
-        // GET: api/location
-        [HttpGet("{Door}&{Brand}", Name = "GET")]
+        // GET: api/location/4&Ford
+        [HttpGet("{Door}&{Brand}", Name = "GETLocationByCar")]
         public List<CarLocation> Get(string door, string brand)
         {
             return dbu.GetLocationsByCar(door, brand);
