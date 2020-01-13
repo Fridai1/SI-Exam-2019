@@ -14,7 +14,7 @@ namespace SurveyServiceApp.Managers
     {
         public async Task<List<Car>> GetCars()
         {
-            var responseString = await HomeController.Client.GetStringAsync("http://192.168.129.225:8002/api/car");
+            var responseString = await HomeController.Client.GetStringAsync("http://192.168.0.25:8002/api/car");
             var cars = new List<Car>();
             cars = JsonConvert.DeserializeObject<List<Car>>(responseString);
 
