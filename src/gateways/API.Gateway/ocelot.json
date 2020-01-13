@@ -48,13 +48,6 @@
       "ServiceName": "PickupDropoffService",
       "UpstreamPathTemplate": "/api/pickupdropoff/{everything}",
       "UpstreamHttpMethod": [ "Get" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/customer/{everything}",
-      "DownstreamScheme": "http",
-      "ServiceName": "CustomerService",
-      "UpstreamPathTemplate": "/api/customer/{everything}",
-      "UpstreamHttpMethod": [ "Get" ]
     }
   ],
   "GlobalConfiguration": {
