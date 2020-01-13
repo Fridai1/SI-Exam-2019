@@ -27,7 +27,7 @@ services:
       - ServiceConfig__serviceName=SurveyService
       - ServiceConfig__serviceId=1
     ports:
-      - "5007:80"
+      - "6007:80"
   PickupDropoffService:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

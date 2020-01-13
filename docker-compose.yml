@@ -24,12 +24,6 @@ services:
         context: .
         dockerfile: src/services/PickupDropoffService/Dockerfile
     container_name: PickupDropoffService
-  CustomerService:
-    image: customerservice:latest
-    build:
-        context: .
-        dockerfile: src/services/CustomerService/Dockerfile
-    container_name: CustomerService
   api.gateway:
     image: apigateway:latest
     build:
