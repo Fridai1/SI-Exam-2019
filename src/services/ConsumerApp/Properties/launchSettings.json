@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "ConsumerApp": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\nikod\\Documents\\SI-Exam-2019\\src\\services\\ConsumerApp\\bin\\Debug\\netcoreapp3.0\\ConsumerApp.exe"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

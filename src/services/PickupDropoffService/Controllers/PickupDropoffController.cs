@@ -24,31 +24,31 @@ namespace PickupDropoffService.Controllers
 
         // GET: api/PickupDropoff/Copenhagen&key=INSERT_API_KEY
 
-        [HttpGet("{city1}&key={apiKey}", Name = "Get")]
+        [HttpGet("{city1}&{destinations}&key={apiKey}", Name = "Get")]
         // Make into array to return more destinations and calculate the distance.
-        public string Get(string city1, [FromBody]Car car, string apiKey)
+        public Location Get(string city1, List<string> destinations, string apiKey)
         {
-            // Location API Request
-            string responseFromLocationService = "";
-            List<CarLocation> carLocations = null;
+            //// Location API Request
+            //string responseFromLocationService = "";
+            //List<CarLocation> carLocations = null;
 
-            WebRequest locationRequest = WebRequest.Create($"http://192.168.0.25:8002/api/location/{car.Doors}&{car.Brand}");
-            locationRequest.Credentials = CredentialCache.DefaultCredentials;
-            WebResponse webResponse = locationRequest.GetResponse();
-            Stream locationStream = webResponse.GetResponseStream();
+            //WebRequest locationRequest = WebRequest.Create($"http://172.18.76.65:8002/api/location/{destinations}&{car.Brand}");
+            //locationRequest.Credentials = CredentialCache.DefaultCredentials;
+            //WebResponse webResponse = locationRequest.GetResponse();
+            //Stream locationStream = webResponse.GetResponseStream();
 
-            StreamReader locationReader = new StreamReader(locationStream);
-            responseFromLocationService = locationReader.ReadToEnd();
-            carLocations = JsonConvert.DeserializeObject<List<CarLocation>>(responseFromLocationService);
+            //StreamReader locationReader = new StreamReader(locationStream);
+            //responseFromLocationService = locationReader.ReadToEnd();
+            //carLocations = JsonConvert.DeserializeObject<List<CarLocation>>(responseFromLocationService);
 
-            carLocations.GetAllAddresses();
+            //carLocations.GetAllAddresses();
 
             // Google API Request
             string responseFromGoogleService = "";
             Location googleLocation = null;
 
 
-            WebRequest googleRequest = WebRequest.Create($"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={city1}&destinations={carLocations.GetAllAddresses()}&key={apiKey}");
+            WebRequest googleRequest = WebRequest.Create($"https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={city1}&destinations={destinations}&key={apiKey}");
             googleRequest.Credentials = CredentialCache.DefaultCredentials;
             WebResponse googleResponse = googleRequest.GetResponse();
             Stream googleStream = googleResponse.GetResponseStream();
@@ -63,7 +63,7 @@ namespace PickupDropoffService.Controllers
             //return $"From {myLocation.Origin_Addresses[0]} to {myLocation.Destination_Addresses[0]}";
             //return responseFromServer;
             // return googleLocation.Rows[0].Elements[0].Distance.Text;
-            return responseFromGoogleService;
+            return googleLocation;
         }
 
         // POST: api/PickupDropoff

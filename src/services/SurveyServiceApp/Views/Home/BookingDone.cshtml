@@ -1,0 +1,48 @@
+﻿@using SurveyServiceApp.Controllers
+@{
+    ViewData["Title"] = "BookingDone";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model HomeController
+
+<h1>BookingDone</h1>
+<div class="col-md-8">
+
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Location</th>
+                <th scope="col">Distance</th>
+                <th scope="col">Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @*@{
+                    foreach (var car in HomeController)
+                        {
+                            <td>@car.DestinationAddresses[0]</td>
+                            <td>@car.Rows[0].Elements[0].Distance.Text</td>
+                            <td>@car.Rows[0].Elements[0].Duration.Text</td>
+                        }
+                }*@
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

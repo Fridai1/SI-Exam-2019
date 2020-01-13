@@ -2,9 +2,7 @@
 {
     public class Car
     {
-        public int id { get; set; }
-        public string licensePlate { get; set; }
-        public string brand { get; set; }
-        
+        public string Brand { get; set; }
+        public int Doors { get; set; }
     }
 }

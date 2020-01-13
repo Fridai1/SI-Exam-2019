@@ -1,4 +1,4 @@
-﻿namespace SurveyServiceApp.Models
+﻿namespace ConsumerApp.Models
 {
     public class Car
     {
@@ -17,7 +17,7 @@
 
         public Car()
         {
-
+           
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Car_Service.Controllers
 
         public List<Car> GetAllCars()
         {
-            string query = "SELECT c.brand, c.licensePlate FROM `Cars` c";
+            string query = "SELECT c.brand, c.licensePlate, c.doors FROM `Cars` c";
 
             using (IDbConnection connection = new MySqlConnection(connString))
             {

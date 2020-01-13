@@ -57,8 +57,13 @@ a {
 
 .background-container {
     background: url('../images/cars/f150-ford-gray.jpg') no-repeat center;
-    -ms-background-size: cover;
     background-size: cover;
+    padding-top: 40%;
+}
+
+.background-container a {
+    margin-left: 75%;
+    margin-bottom: 5%;
 }
 
 /* Featured Car Types */

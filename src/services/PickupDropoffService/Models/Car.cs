@@ -6,6 +6,6 @@
         public string licensePlate { get; set; }
         public string Brand { get; set; }
         public int IdCarLocation { get; set; }
-        public string Doors { get; set; }
+        public int Doors { get; set; }
     }
 }

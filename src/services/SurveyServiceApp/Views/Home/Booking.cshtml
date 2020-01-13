@@ -1,0 +1,63 @@
+﻿@using SurveyServiceApp.Controllers
+@using SurveyServiceApp.Managers
+@{
+    ViewData["Title"] = "Booking";
+    CarManager carManager = new CarManager();
+
+}
+
+@model HomeController
+<link href="/css/BookForm.css" rel="stylesheet" />
+<div style="padding-top: 1%">
+    <h1>Booking</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="bookForm">
+                <h4 class="heading"><strong>Book </strong>now <span></span></h4>
+                <div class="form">
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Drivers License</label>
+                            <input name="DriversLicense" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter drivers license..">
+                        </div>
+                        <div class="form-group">
+                            <label for="selectBrandForm">Brand</label>
+                            <select name="Brand" class="form-control" id="selectBrandForm">
+                                @{
+                                    List<Car> brandCache = new List<Car>();
+
+                                    foreach (var car in carManager.GetCars().Result)
+                                    {
+                                        if (!brandCache.Exists(x => x.Brand == car.Brand))
+                                        {
+                                            brandCache.Add(car);
+                                            <option>@car.Brand</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectDoorsForm">Amount of Doors</label>
+                            <select name="Doors" class="form-control" id="selectDoorsForm">
+                                @{
+                                    List<Car> doorsCache = new List<Car>();
+                                    foreach (var car in carManager.GetCars().Result)
+                                    {
+                                        if (!doorsCache.Exists(x => x.Doors == car.Doors))
+                                        {
+                                            doorsCache.Add(car);
+                                            <option>@car.Doors</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
